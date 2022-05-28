@@ -33,6 +33,9 @@ fetch(baseurl)
     var modelo = card.querySelector(".modelo")
     modelo.innerHTML = ordenador.modelo
 
+    var srcPhoto = card.querySelector(".mouse")
+    srcPhoto.src = ordenador.photo_url
+
 
     applicationContainer.append(card)
 
