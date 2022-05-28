@@ -1,5 +1,5 @@
 var baseurl = "https://2v1s89q67i.execute-api.us-west-2.amazonaws.com/dev/ordenadores";
-var prueba = document.querySelector(".template");
+var template = document.querySelector(".template");
 var applicationContainer = document.querySelector("[class-ordenador-container]");
 var searchInput = document.getElementById("search");
 
@@ -20,7 +20,7 @@ fetch(baseurl)
 .then(data => {
   ordenadores = data['ordenadores'].map(ordenador => {
 
-    const application = prueba.content;
+    const application = template.content;
 
     const card = application.cloneNode(true).children[0]
 

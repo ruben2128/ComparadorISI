@@ -1,5 +1,6 @@
 var baseurl = "https://2v1s89q67i.execute-api.us-west-2.amazonaws.com/dev/ordenador";
-var aplication = document.querySelector(".container");
+var application = document.querySelector(".template");
+var container = document.querySelector(".container");
 const getUrl = new URLSearchParams(window.location.search)
 id = getUrl.get('id')
 
@@ -9,16 +10,20 @@ fetch(baseurl+`?ordenadorId=${id}`)
 .then(res => res.json())
 .then(data => {
 
-    var prueba =
-    `<h1>Modelo: ${data.modelo}</h1>
-    <h3>Cpu: ${data.cpu}</h3>
-    <h3>Grafica: ${data.grafica}</h3>
-    <h3>Almacenamiento: ${data.almacenamiento}</h3>
-    <h3>Categoria: ${data.categoria}</h3>
-    <h3>Marca: ${data.marca}</h3>
-    <h3>Memoria Ram: ${data.memoria_ram}</h3>`;
+    const content = application.content;
+    
+    const card = content.cloneNode(true)
 
-    aplication.innerHTML += prueba;
+    card.querySelector(".modelo").innerHTML = 'Modelo: '+data.modelo
+    card.querySelector(".cpu").innerHTML = 'CPU: '+data.cpu
+    card.querySelector(".grafica").innerHTML = 'Gráfica: '+data.grafica
+    card.querySelector(".almacenamiento").innerHTML = 'Almacenamiento: '+data.almacenamiento
+    card.querySelector(".categoria").innerHTML = 'Categoria: '+data.categoria
+    card.querySelector(".marca").innerHTML = 'Marca: '+data.marca
+    card.querySelector(".memoria_ram").innerHTML = 'Memoria Ram: '+data.memoria_ram
+
+
+    container.append(card)
 
 
 
