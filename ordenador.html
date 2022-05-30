@@ -7,36 +7,38 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="mainpage.css">
     <title>Ordenador</title>
 </head>
 <body>
 
-    <div class="topnav">
-        <a class="active" href="index.html">Home</a>
-        <a href="contacto.html">Contacto</a>
-        <div class="search-container">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </div>
-      </div>
+  <div class="topnav">
+    <div class = "logo">
+      <center>
+        <a href="index.html">
+          <div id="logo" style="position:absolute; width:300px; height:100px; top: 0px; left: 187px">
+              <img src = "Logo.png" width = "85px" href = "index.html">
+          </div>
+        </a>
+      </center>
+    </div>
+    <div class = "directorios">
+      <center>
+      <a href="contacto.html" style="color:rgb(255, 255, 255)">Contacto</a>
+    </center>
+    </div>   
+  </div>
+    
+    <div id="pc">
 
-      <div class="container">
-        <template class="template">
-          <h1 class="modelo"></h1>
-          <h3 class="cpu"></h3>
-          <h3 class="memoria_ram"></h3>
-          <h3 class="grafica"></h3>
-          <h3 class="almacenamiento"></h3>
-          <h3 class="categoria"></h3>
-          <h3 class="marca"></h3>
-        </template>
-      </div>
+      <div class="container"></div>
 
-    <div class="price"></div>
-
-    <script src="ordenador.js"></script>
-    <script src="wrapperAmazon.js"></script>
-
+      <div class="price"></div>
+  
+      <script src="ordenador.js"></script>
+      <script src="wrapperAmazon.js"></script>
+    </div>
+    
     
 </body>
 </html>

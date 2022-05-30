@@ -1,7 +1,9 @@
+
 var baseurl = "https://2v1s89q67i.execute-api.us-west-2.amazonaws.com/dev/ordenadores";
 var template = document.querySelector(".template");
 var applicationContainer = document.querySelector("[class-ordenador-container]");
 var searchInput = document.getElementById("search");
+
 
 searchInput.addEventListener("input", e => {
   const value = e.target.value.toLowerCase()
@@ -11,7 +13,7 @@ searchInput.addEventListener("input", e => {
     
   });
   
-
+  
 
 })
 
@@ -44,7 +46,6 @@ fetch(baseurl)
   });
 })
 .catch(err => console.log(err))
-
 
     
     
