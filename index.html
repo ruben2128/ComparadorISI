@@ -7,54 +7,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="card.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     
 
     </head>
+
   <body>
 
-    
-
     <div class="topnav">
-      <a class="active" href="index.html">Home</a>
-      <a href="contacto.html">Contacto</a>
-      <div class="search__container">
-        <input class="search__input" type="text" placeholder="Busca un ordenador" id="search">
+      <div class = "logo" id="logo">
+        
+          <img src = "Logo2.png" width = "250px" >
+        
       </div>
-    </div>
-
-
-    
-
-    
-
-
+      <div class = "directorios">
+        <div class="search__container" id="busqueda">
+          <input class="search__input" type="text" placeholder="Busca un ordenador" id="search">
+        </div>
       
-  </div>
+      </div>
+      
+      
+    </div>
 
     <div class="row">
 
       <div class="side">
 
-        <form>
-
-          <div id="procesador">
+          <div class="container">
             <h3>Elige el procesador</h3>
-            <hr>
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="Intel">
-                <label class="form-check-label" for="Intel">Intel</label>
-              </div>
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="AMD">
-                <label class="form-check-label" for="AMD">Amd</label>
-              </div>
-
-            
-            
+              <div>
+                <div><input type="checkbox" name="procesador" value="Intel" id="Intel"><label for="Intel">Intel</label></div>
+                <div><input type="checkbox" name="procesador" value="AMD" id="AMD"><label for="AMD">AMD</label></div>
+              </div>  
           </div>
-
-        </form>
 
       </div>
 
@@ -82,6 +71,35 @@
     </div>
     
     <script src="index.js"></script>
+    <script>
+      function change(){
+        let resultados = Array.from(document.querySelectorAll('.main > div')),
+        procesadorChecked = document.querySelectorAll('.container input.procesadores:checked');
+
+        resultados.forEach(function(resultado){
+          resultado.style.display = 'none';
+        });
+
+        filtrarProcesador(procesadorChecked);
+
+        function filtrarProcesador (procesadoresChecked) {
+          resultados = Array.from(procesadoresChecked).reduce(function(sum,input){
+            const atributo = input.getAttribute('value');
+            return sum.concat(resultados.filter(function (resultado){
+              return resultado.classList.contains(atributo);
+            }
+            ));
+          }, []);
+        }
+
+        resultados.forEach(function(resultado){
+          resultado.style.display = 'block';
+        });
+      } 
+      
+      change();
+      
+    </script>
 
 
 
