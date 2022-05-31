@@ -8,18 +8,26 @@ id = getUrl.get('id')
 fetch(baseurl+`?ordenadorId=${id}`)
 .then(res => res.json())
 .then(data => {
+    var modelo = data.modelo;
+    modelo = modelo.toUpperCase();
 
-    var imagen= `<img src="${data.photo_url}" height=400px width=400px>`;
+    
+    var imagen= `<img src="${data.photo_url}" height=700px width=700px>`;
     aplication.innerHTML +=imagen;
 
+
     var prueba =
-    `<article><h1>Modelo:</h1> ${data.modelo}<br>
-    <h1>Cpu:</h1> ${data.cpu}<br>
-    <h1>Grafica:</h1> ${data.grafica}<br>
-    <h1>Almacenamiento:</h1> ${data.almacenamiento}<br>
-    <h1>Categoria:</h1> ${data.categoria}<br>
-    <h1>Marca:</h1> ${data.marca}<br>
-    <h1>Memoria Ram:</h1> ${data.memoria_ram}</article>`;
+    `<div class="col-1-text">
+    <div class="modelo">
+    ${modelo}
+    </div>
+    <div class="resto">
+    <h1>CPU:</h1> <div class="sub-texto">${data.cpu} </div> <br>
+    <h1>Grafica:</h1> <div class="sub-texto"> ${data.grafica} </div> <br>
+    <h1>Almacenamiento:</h1> <div class="sub-texto">${data.almacenamiento} </div> <br>
+    <h1>Categoria:</h1> <div class="sub-texto">${data.categoria} </div> <br>
+    <h1>Marca:</h1> <div class="sub-texto">${data.marca} </div> <br>
+    <h1>Memoria Ram:</h1> <div class="sub-texto">${data.memoria_ram}</div> <br></div>`;
 
     aplication.innerHTML +=prueba;
     

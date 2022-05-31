@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>ComPC</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,12 +10,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="Logo.png">
     
     
 
     </head>
 
-  <body>
+  <body class="cuerpo"> 
 
     <div class="topnav">
       <div class = "logo" id="logo">
@@ -23,21 +24,32 @@
           <img src = "Logo2.png" width = "250px" >
         
       </div>
-      <div class = "directorios">
-        <div class="search__container" id="busqueda">
+
+      
+
+        <div class="search__container" id="busqueda" >
           <input class="search__input" type="text" placeholder="Busca un ordenador" id="search">
+          <div class = "directorios">
+            <a href="contacto.html">
+              <div id="logo" style=" width:100px; ">
+                <img src = "Sample_User_Icon.png" width = "40px" href = "contacto.html" >
+              </div>
+            </a>
+          </div> 
         </div>
       
-      </div>
+        
+      
+      
       
       
     </div>
 
     <div class="row">
 
-      <div class="side">
+      <div class="side" >
 
-          <div class="container">
+          <div class="container" >
             <h3>Elige el procesador</h3>
               <div>
                 <div><input type="checkbox" name="procesador" value="Intel" id="Intel"><label for="Intel">Intel</label></div>
@@ -58,7 +70,7 @@
               </div>
               <div class="contentBox">
                 <h3 class="modelo"></h3>
-                <h2 class="price">- €</h2>
+                
                 <a href="#" class="buy">Compra ahora</a>
               </div>
             </div>
