@@ -5,9 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="mainpage.css">
+    <link rel="stylesheet" href="table.css">
     <title>Ordenador</title>
 </head>
 <body>
@@ -32,12 +31,45 @@
     <div id="pc">
 
       <div class="container"></div>
-
-      <div class="price"></div>
   
-      <script src="ordenador.js"></script>
-      <script src="wrapperAmazon.js"></script>
+      
     </div>
+
+
+  
+    <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
+          <tr>
+            <th>Tienda</th>
+            <th>Precio</th>
+            <th>Enlace</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+          <tr>
+            <td>MediaMarkt</td>
+            <td class="price_MM"></td>
+            <td><span><a class="enlace_MM" href=""></a></span></td>
+          </tr>
+          <tr>
+            <td>Amazon</td>
+            <td class="price_AM"></td>
+            <td><span><a class="enlace_AM" href=""></a></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    
+
+    <script src="ordenador.js"></script>
+    <script src="scrapperMM.js"></script>
+    <script src="wrapperAmazon.js"></script>
     
     
 </body>

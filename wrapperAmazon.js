@@ -1,4 +1,6 @@
-var aplication = document.querySelector(".price")
+var aplication1 = document.querySelector(".price_AM")
+var aplication2 = document.querySelector(".enlace_AM")
+
 const getUrlOrdenador = new URLSearchParams(window.location.search)
 id = getUrlOrdenador.get('id')
 
@@ -10,7 +12,7 @@ const options = {
 	method: 'GET',
 	headers: {
 		'X-RapidAPI-Host': 'amazon24.p.rapidapi.com',
-		'X-RapidAPI-Key': '85c2b05af8msh4b925bb881faad6p13d0e2jsnc314c174c888'
+		'X-RapidAPI-Key': '0762b494d5msh8a2cd53b2ddde36p1ae593jsn142775843ac4'
 	}
 };
 
@@ -22,14 +24,41 @@ fetch(baseurl+`?ordenadorId=${id}`)
 	fetch('https://amazon24.p.rapidapi.com/api/product?categoryID=computers&keyword='+ ordenador.modelo +'&country=ES&page=1', options)
 		.then(response => response.json())
 		.then(data => {
-			data['docs'].forEach(element => {
+			data['docs'].every(element => {
+
+				
+
 
 				var mainString = element.product_title.toLowerCase()
 				var subString = ordenador.modelo.toLowerCase()
+				console.log(element)
 
 				if(mainString.includes(subString)){
-					aplication.innerHTML = element.price
+					aplication1.innerHTML = element.app_sale_price
+					aplication2.href = element.product_detail_url
+
+					if (element.app_sale_price == null && element.product_detail_url != null){
+						aplication1.innerHTML = 'No hay Stock'
+					}
+
+					return false
+				
+				
+				
+				}else{
+
+					aplication1.innerHTML = element.app_sale_price
+					aplication2.href = element.product_detail_url
+
+					if (element.app_sale_price == null && element.product_detail_url != null){
+						aplication1.innerHTML = 'No hay Stock'
+					}
+
+					return false
+					
 				}
+
+				
 
 				
 				
