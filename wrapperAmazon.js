@@ -31,7 +31,6 @@ fetch(baseurl+`?ordenadorId=${id}`)
 
 				var mainString = element.product_title.toLowerCase()
 				var subString = ordenador.modelo.toLowerCase()
-				console.log(element)
 
 				if(mainString.includes(subString)){
 					aplication1.innerHTML = element.app_sale_price
@@ -67,7 +66,11 @@ fetch(baseurl+`?ordenadorId=${id}`)
 			});
 	
 		})
-		.catch(err => console.error(err));
+		.catch(err => {
+			console.error(err)
+			aplication2.classList.toggle("hide", true)
+			aplication1.innerHTML = '-'
+		});
 
 
 

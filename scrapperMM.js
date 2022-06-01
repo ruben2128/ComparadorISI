@@ -10,19 +10,31 @@ fetch(baseurl+`?ordenadorId=${id}`)
 .then(ordenador => {
 
 
-    fetch(baseurlDataMM+`?modelo=${ordenador.modelo}`)
+    fetch(baseurlDataMM+`?modelo=${ordenador.modelo}` )
     .then(result => result.json())
     .then(data => {
-        aplication3.innerHTML = data.precio
-        if (data.enlace == '-'){
-            aplication4.classList.toggle("hide", true)
-        }
-        aplication4.href = 'https://www.mediamarkt.es'+data.enlace
+        console.log(data)
+        data['ordenadores'].every(element => {
+
+            var mainString = element.product_title.toLowerCase()
+            var modelo = ordenador.modelo.toLowerCase()
+            if (mainString.includes(modelo)){
+                aplication3.innerHTML = element.precio
+                aplication4.href = 'https://www.mediamarkt.es'+element.enlace
+                return false
+            }else{
+                aplication3.innerHTML = '-'
+                aplication4.classList.toggle("hide", true)
+            }
+        });
+        
     
     
 
     })
-    .catch(err => console.log(err) )
+    .catch(err => {
+        console.log(err)
+    })
 
     
     
