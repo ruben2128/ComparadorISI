@@ -25,7 +25,7 @@ body {
 .main {   
   -ms-flex: 70%; /* IE10 */
   flex: 70%;
-  background-color: white;
+  background-color: ccc;
   padding: 20px;
 }
 
@@ -41,7 +41,10 @@ body {
 
   .topnav {
     overflow: hidden;
-    background-color: rgb(59, 57, 57);
+    /*background-color: rgb(250, 186, 185);*/
+    /*border: solid RGB(247, 202, 201) 10px;*/
+    width: auto;
+
   }
 
   .topnav a {
@@ -57,7 +60,8 @@ body {
 
 
   .topnav .search-container {
-    float : left;
+    text-align: center;
+    border:  rgb(0, 0, 0);
   }
   
   .topnav input[type=text] {
@@ -103,36 +107,59 @@ body {
     background-color: orange;
   }
 
-  #pc{
-    margin-top: 10%;
-    margin-left: 12%;
-    border: solid black 1px;
-    
-  }
-
-  #pc h1{
-  
-    display: inline;
-    font-weight: 1000;
-    border: solid black 1px;
-
-  }
-
-  #pc article{
-    margin-top: 1%;
-    border: solid black 1px;
-    font-size: 20px;
-    font-family: monospace;
-    float:right;
-    margin-right: 15%;
-    
-  }
 
   #logo{
     text-align: center;
+    padding: 10px 0;
   }
 
   #busqueda{
     text-align: center;
     padding-bottom: 20px;
   }
+
+  .container{
+    display: flex;
+    
+  }
+
+  .col-1-text{
+
+    margin-left: 20%;
+
+  }
+
+  .modelo{
+    border: rgb(133, 131, 131);
+    font-size: 50px;
+    margin-top: 10%;
+  }
+
+  .resto{
+    margin-top: 4%;
+  }
+
+  .cuerpo{
+    background-color: #ccc;
+  }
+
+  .directorios{
+    float:right;
+  }
+
+  .pagina-contacto{
+    background-color: #ccc;
+  }
+
+  .sub-texto{
+    margin-left: 20%;
+    font-size: 20px;
+  }
+
+  .search-container{
+    text-align: center;
+    border: rgb(0, 0, 0);
+  }
+  
+  
+

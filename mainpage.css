@@ -1,9 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Istok Web", sans-serif;
+}
+
 .card {
   position: relative;
-  width: 275px;
-  height: 500px;
+  width: 250px;
+  height: 425px;
   background: #191919;
   border-radius: 20px;
   overflow: hidden;
@@ -15,7 +21,7 @@
   top: -50%;
   width: 100%;
   height: 100%;
-  background: rgb(165, 165, 165);
+  background: #ffce00;
   transform: skewY(345deg);
   transition: 0.5s;
 }
@@ -26,7 +32,7 @@
 }
 
 .card::after {
-  content: "ComPC";
+  content: "PcComp";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -44,7 +50,18 @@
   padding-top: 20px;
   z-index: 1;
 }
+/*
+.card .imgBox img {
+    max-width: 100%;
+    
+    transition: .5s;
+}
 
+.card:hover .imgBox img {
+    max-width: 50%;
+      
+}
+*/
 .card .contentBox {
   position: relative;
   padding: 20px;
@@ -52,7 +69,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: auto;
   z-index: 2;
 }
 
