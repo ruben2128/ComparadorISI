@@ -3,19 +3,62 @@ var baseurl = "https://2v1s89q67i.execute-api.us-west-2.amazonaws.com/dev/ordena
 var template = document.querySelector(".template");
 var applicationContainer = document.querySelector("[class-ordenador-container]");
 var searchInput = document.getElementById("search");
+const coleccion = document.getElementsByClassName("check1");
+const miarray = [...coleccion];
+const coleccion2 = document.getElementsByClassName("check2");
+const miarray2 = [...coleccion2];
+const pcs=[];
 
+for(i of miarray){
+  i.addEventListener("change", a => {
+    if(!a.target.checked){
+      ordenadores.forEach(data => {
+        console.log(data.element.classList.toggle("hide", false))
+      });
+    }
+    else{
+    const valu = a.target.value.toLowerCase()
+    ordenadores.forEach(data => {
+      const isVisibl = data.cpu.toLowerCase().includes(valu)
+      pcs.push(data.element)
+      console.log(data.element.classList.toggle("hide", !isVisibl))
+    
+    });
+    }
+  }
+)
+}
+
+for(i of miarray2){
+
+  i.addEventListener("change", a => {
+    if(!a.target.checked){
+      ordenadores.forEach(data => {
+        console.log(data.element.classList.toggle("hide", false))
+      });
+    }
+    else{
+    const valu = a.target.value.toLowerCase()
+    ordenadores.forEach(data => {
+      const isVisibl = data.ram.toLowerCase().includes(valu)
+      pcs.push(data.element)
+      console.log(data.element.classList.toggle("hide", !isVisibl))
+    
+    });
+    }
+  }
+)
+}
 
 searchInput.addEventListener("input", e => {
   const value = e.target.value.toLowerCase()
   ordenadores.forEach(data => {
     const isVisible = data.modelo.toLowerCase().includes(value)
     console.log(data.element.classList.toggle("hide", !isVisible))
-    
   });
-  
-  
+}
+)
 
-})
 
 fetch(baseurl)
 .then(res => res.json())
@@ -41,7 +84,7 @@ fetch(baseurl)
 
     applicationContainer.append(card)
 
-    return { modelo: ordenador.modelo, element: card}
+    return { modelo: ordenador.modelo, element: card, cpu: ordenador.cpu, ram: ordenador.memoria_ram}
 
   });
 })

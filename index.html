@@ -49,12 +49,21 @@
 
       <div class="side" >
 
-          <div class="container" >
+          <div>
             <h3>Elige el procesador</h3>
               <div>
-                <div><input type="checkbox" name="procesador" value="Intel" id="Intel"><label for="Intel">Intel</label></div>
-                <div><input type="checkbox" name="procesador" value="AMD" id="AMD"><label for="AMD">AMD</label></div>
+                <div><input type="checkbox" class="check1" name="procesador" value="Intel"><label for="Intel">Intel</label></div>
+                <div><input type="checkbox" class="check1" name="procesador" value="AMD"><label for="AMD">AMD</label></div>
+              </div>
+              <br>
+
+              <h3>Elige la ram</h3>
+              <div>
+                <div><input type="checkbox" class="check2" name="ram" value="8"><label for="Intel">8GB</label></div>
+                <div><input type="checkbox" class="check2" name="ram" value="16"><label for="AMD">16GB</label></div>
               </div>  
+
+
           </div>
 
       </div>
@@ -83,37 +92,6 @@
     </div>
     
     <script src="index.js"></script>
-    <script>
-      function change(){
-        let resultados = Array.from(document.querySelectorAll('.main > div')),
-        procesadorChecked = document.querySelectorAll('.container input.procesadores:checked');
-
-        resultados.forEach(function(resultado){
-          resultado.style.display = 'none';
-        });
-
-        filtrarProcesador(procesadorChecked);
-
-        function filtrarProcesador (procesadoresChecked) {
-          resultados = Array.from(procesadoresChecked).reduce(function(sum,input){
-            const atributo = input.getAttribute('value');
-            return sum.concat(resultados.filter(function (resultado){
-              return resultado.classList.contains(atributo);
-            }
-            ));
-          }, []);
-        }
-
-        resultados.forEach(function(resultado){
-          resultado.style.display = 'block';
-        });
-      } 
-      
-      change();
-      
-    </script>
-
-
 
   </body>
 </html>

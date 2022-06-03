@@ -66,6 +66,7 @@ body {
   
   .topnav input[type=text] {
     padding: 6px;
+    margin-left: 140px;
     margin-top: 8px;
     font-size: 17px;
     border: none;
@@ -158,7 +159,6 @@ body {
 
   .search-container{
     text-align: center;
-    border: rgb(0, 0, 0);
   }
   
   
