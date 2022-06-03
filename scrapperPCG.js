@@ -2,6 +2,7 @@ var baseurl = "https://2v1s89q67i.execute-api.us-west-2.amazonaws.com/dev/ordena
 var baseurlDataPCG= "https://2v1s89q67i.execute-api.us-west-2.amazonaws.com/dev/pcgaming"
 var aplication5 = document.querySelector(".price_PCG")
 var aplication6 = document.querySelector(".enlace_PCG")
+aplication5.innerHTML = '-'
 
 
 
@@ -22,16 +23,21 @@ fetch(baseurl+`?ordenadorId=${id}`)
                 aplication6.href = 'https://www.pcgaming365.com'+element.enlace
                 return false
             }else{
-                aplication5.innerHTML = '-'
                 aplication6.classList.toggle("hide", true)
             }
+
+
+            return true
         });
         
     
     
 
     })
-    .catch(err => console.log(err) )
+    .catch(err =>{
+        aplication6.classList.toggle("hide", true)
+        console.log(err)
+    })
 
     
     

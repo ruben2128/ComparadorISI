@@ -12,7 +12,7 @@ fetch(baseurl+`?ordenadorId=${id}`)
     modelo = modelo.toUpperCase();
 
     
-    var imagen= `<img src="${data.photo_url}" height=700px width=700px>`;
+    var imagen= `<img src="${data.photo_url}" height=300x width=400px>`;
     aplication.innerHTML +=imagen;
 
 
