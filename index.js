@@ -3,47 +3,86 @@ var baseurl = "https://2v1s89q67i.execute-api.us-west-2.amazonaws.com/dev/ordena
 var template = document.querySelector(".template");
 var applicationContainer = document.querySelector("[class-ordenador-container]");
 var searchInput = document.getElementById("search");
-const coleccion = document.getElementsByClassName("check1");
+const coleccion = document.getElementsByClassName("check");
 const miarray = [...coleccion];
-const coleccion2 = document.getElementsByClassName("check2");
-const miarray2 = [...coleccion2];
-const pcs=[];
+var pc=[];
+
+
 
 for(i of miarray){
   i.addEventListener("change", a => {
+
     if(!a.target.checked){
-      ordenadores.forEach(data => {
-        console.log(data.element.classList.toggle("hide", false))
-      });
+      location.reload()
     }
     else{
     const valu = a.target.value.toLowerCase()
-    ordenadores.forEach(data => {
-      const isVisibl = data.cpu.toLowerCase().includes(valu)
-      pcs.push(data.element)
-      console.log(data.element.classList.toggle("hide", !isVisibl))
-    
-    });
-    }
-  }
-)
-}
 
-for(i of miarray2){
-
-  i.addEventListener("change", a => {
-    if(!a.target.checked){
+    if(valu=="sobremesa" || valu=="portatil"){
+      var i=0
       ordenadores.forEach(data => {
-        console.log(data.element.classList.toggle("hide", false))
+
+        const isVisibl = data.categoria.toLowerCase().includes(valu)
+        if(isVisibl){
+          pc[i]=true;
+        }
+        else{
+          pc[i]=false;
+        }
+        i=i+1;
       });
     }
-    else{
-    const valu = a.target.value.toLowerCase()
+
+    if(valu=="hp" || valu=="msi" || valu=="asus" || valu=="huawei" || valu=="dell" || valu=="lenovo" || valu=="acer" || valu=="apple" || valu=="microsoft" || valu=="samsung"){
+      var i=0
+      ordenadores.forEach(data => {
+
+        const isVisibl = data.marca.toLowerCase().includes(valu)
+        if(isVisibl && pc[i]==true){
+          pc[i]=true;
+        }
+        else{
+          pc[i]=false;
+        }
+        i=i+1;
+      });
+    }
+
+    if(valu=="intel" || valu=="amd" || valu=="apple"){
+      var i=0
+      ordenadores.forEach(data => {
+
+        const isVisibl = data.cpu.toLowerCase().includes(valu)
+        if(isVisibl && pc[i]==true){
+          pc[i]=true;
+        }
+        else{
+          pc[i]=false;
+        }
+        i=i+1;
+      });
+    }
+
+    if(valu=="8" || valu=="16" || valu=="32"){
+      var i=0
+      ordenadores.forEach(data => {
+
+        const isVisibl = data.ram.toLowerCase().includes(valu)
+        if(isVisibl && pc[i]==true){
+          pc[i]=true;
+        }
+        else{
+          pc[i]=false;
+        }
+        i=i+1;
+      });
+    }
+    var i=0
     ordenadores.forEach(data => {
-      const isVisibl = data.ram.toLowerCase().includes(valu)
-      pcs.push(data.element)
-      console.log(data.element.classList.toggle("hide", !isVisibl))
-    
+      if(!pc[i]){
+        console.log(data.element.classList.toggle("hide", true))
+      }
+      i=i+1
     });
     }
   }
@@ -82,14 +121,12 @@ fetch(baseurl)
     var srcPhoto = card.querySelector(".mouse")
     srcPhoto.src = ordenador.photo_url
 
-
     applicationContainer.append(card)
 
-    return { modelo: ordenador.modelo, element: card, cpu: ordenador.cpu, ram: ordenador.memoria_ram}
+    return { modelo: ordenador.modelo, element: card, cpu: ordenador.cpu, ram: ordenador.memoria_ram, marca:ordenador.marca, categoria:ordenador.categoria}
 
   });
 })
 .catch(err => console.log(err))
 
-    
-    
+
