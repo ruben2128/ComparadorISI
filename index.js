@@ -50,6 +50,7 @@ for(i of miarray2){
 )
 }
 
+//Funcion de la barra de busqueda 
 searchInput.addEventListener("input", e => {
   const value = e.target.value.toLowerCase()
   ordenadores.forEach(data => {
@@ -59,7 +60,7 @@ searchInput.addEventListener("input", e => {
 }
 )
 
-
+//Obtención de todos los ordenadores de la base de datos y muestra en la vista 
 fetch(baseurl)
 .then(res => res.json())
 .then(data => {

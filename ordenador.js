@@ -4,7 +4,8 @@ const getUrl = new URLSearchParams(window.location.search)
 id = getUrl.get('id')
 
 
-
+//Busqueda del ordenador seleccionado en la base datos
+//Insertamos en la pagina web toda la informacion del ordenador
 fetch(baseurl+`?ordenadorId=${id}`)
 .then(res => res.json())
 .then(data => {
@@ -13,7 +14,7 @@ fetch(baseurl+`?ordenadorId=${id}`)
 
     
     var imagen= `<img src="${data.photo_url}" height=300x width=400px>`;
-    aplication.innerHTML +=imagen;
+    aplication.innerHTML += imagen;
 
 
     var prueba =
@@ -29,7 +30,7 @@ fetch(baseurl+`?ordenadorId=${id}`)
     <h1>Marca:</h1> <div class="sub-texto">${data.marca} </div> <br>
     <h1>Memoria Ram:</h1> <div class="sub-texto">${data.memoria_ram}</div> <br></div>`;
 
-    aplication.innerHTML +=prueba;
+    aplication.innerHTML += prueba;
     
 
 })

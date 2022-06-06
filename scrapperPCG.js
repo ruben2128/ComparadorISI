@@ -1,41 +1,42 @@
 var baseurl = "https://2v1s89q67i.execute-api.us-west-2.amazonaws.com/dev/ordenador";
 var baseurlDataPCG= "https://2v1s89q67i.execute-api.us-west-2.amazonaws.com/dev/pcgaming"
-var aplication5 = document.querySelector(".price_PCG")
-var aplication6 = document.querySelector(".enlace_PCG")
-aplication5.innerHTML = '-'
+var precioPCG = document.querySelector(".price_PCG")
+var enlacePCG = document.querySelector(".enlace_PCG")
+precioPCG.innerHTML = '-'
 
 
-
+//Busqueda del ordenador seleccionado en la base datos
 fetch(baseurl+`?ordenadorId=${id}`)
 .then(res => res.json())
 .then(ordenador => {
 
-
+    //Llamada al scrapper de PCGaming
     fetch(baseurlDataPCG+`?modelo=${ordenador.modelo}` )
     .then(result => result.json())
     .then(data => {
         data['ordenadores'].every(element => {
             
             var mainString = element.product_title.toLowerCase()
-            var modelo = ordenador.modelo.toLowerCase()
             if (mainString != '-'){
-                aplication5.innerHTML = element.precio
-                aplication6.href = 'https://www.pcgaming365.com'+element.enlace
+                precioPCG.innerHTML = element.precio
+                enlacePCG.href = 'https://www.pcgaming365.com'+element.enlace
                 return false
-            }else{
-                aplication6.classList.toggle("hide", true)
             }
 
 
             return true
         });
+        //Caso de no obtener el pc ocultar boton con enlace
+        if(precioPCG.innerHTML == '-'){
+            enlacePCG.classList.toggle("hide", true)
+        }
         
     
     
 
     })
     .catch(err =>{
-        aplication6.classList.toggle("hide", true)
+        enlacePCG.classList.toggle("hide", true)
         console.log(err)
     })
 

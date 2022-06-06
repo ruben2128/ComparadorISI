@@ -1,53 +1,48 @@
 var baseurl = "https://2v1s89q67i.execute-api.us-west-2.amazonaws.com/dev/ordenador";
 var baseurlDataMM= "https://2v1s89q67i.execute-api.us-west-2.amazonaws.com/dev/mediamark"
-var aplication3 = document.querySelector(".price_MM")
-var aplication4 = document.querySelector(".enlace_MM")
-aplication3.innerHTML = '-'
+var precioMM = document.querySelector(".price_MM")
+var enlaceMM = document.querySelector(".enlace_MM")
+precioMM.innerHTML = '-'
 
 
-
+//Busqueda del ordenador seleccionado en la base datos
 fetch(baseurl+`?ordenadorId=${id}`)
 .then(res => res.json())
 .then(ordenador => {
 
-
+    //LLamada al scrapper de MediaMarkt
     fetch(baseurlDataMM+`?modelo=${ordenador.modelo}` )
     .then(result => result.json())
     .then(data => {
         data['ordenadores'].every(element => {
 
-            var mainString = element.product_title.toLowerCase()
+            var productTitle = element.product_title.toLowerCase()
             var modelo = ordenador.modelo.toLowerCase()
             var cpuLC = ordenador.cpu.toLowerCase()
             var cpu = cpuLC.split(" ")
-
-            console.log(mainString.split(/[, ]+/))
-            console.log(cpu)
-
             var match
+
+            //Primer filtro - La cpu Debe aparecer en el titulo del producto
             if( cpu[0] == 'intel'){
-                match = mainString.split(/[, ]+/).find(elemento => {
+                match = productTitle.split(/[, ]+/).find(elemento => {
                     if(elemento.includes(cpu[1])){
                         return true
                     }
                 });
             }else if (cpu[0] == 'amd'){
-                match = mainString.split(/[, ]+/).find(elemento => {
+                match = productTitle.split(/[, ]+/).find(elemento => {
                     if(elemento.includes(cpu[3])){
                         return true
                     }
                 });
-                console.log('amd')
             }
             
 
-            console.log(match)
 
-
-
-            if (mainString.includes(modelo) && match != undefined){
-                aplication3.innerHTML = element.precio
-                aplication4.href = 'https://www.mediamarkt.es'+element.enlace
+            //Segundo filtro el modelo debe aparecer en el titulo del producto    
+            if (productTitle.includes(modelo) && match != undefined){
+                precioMM.innerHTML = element.precio
+                enlaceMM.href = 'https://www.mediamarkt.es'+element.enlace
                 return false
             }
 
@@ -55,17 +50,16 @@ fetch(baseurl+`?ordenadorId=${id}`)
 
 
         });
-        
-        console.log(aplication3.innerHTML)
-        if(aplication3.innerHTML == '-'){
-            aplication4.classList.toggle("hide", true)
+        //Caso de no obtener el pc ocultar boton con enlace
+        if(precioMM.innerHTML == '-'){
+            enlaceMM.classList.toggle("hide", true)
         }
     
 
     })
     .catch(err => {
         console.log(err)
-        aplication4.classList.toggle("hide", true)
+        enlaceMM.classList.toggle("hide", true)
 
     })
 
